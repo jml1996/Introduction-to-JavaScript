@@ -18,6 +18,11 @@ Do the following:
    HINT: no function required
 */
 
+let votingAge = 19;
+if(votingAge >= 18){
+  console.log(true)
+}
+
 
 
 /*
@@ -31,8 +36,12 @@ Do the following:
    HINT: no function required
 */
 
-
-
+let variable1 = 'try';
+let variable2 = 'na';
+if(variable2 !== variable1){
+  variable1 = variable2;
+  console.log(variable1)
+}
 
 
 /*
@@ -46,6 +55,12 @@ Do the following:
    HINT: look up the Number method
 */
 
+let stryng = "1999";
+console.log(stryng);
+console.log(typeof stryng);
+let result = Number(stryng);
+console.log(result);
+console.log(typeof result);
 
 
 
@@ -58,9 +73,10 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-    /*add your code here*/
+function multiply(a, b){
+    return a * b;
   }
+console.log(multiply(5,4));
 
 
 
@@ -74,8 +90,8 @@ Do the following:
    3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-    /*add your code here*/
+function dogYears(age){
+    return 7 * age;
 }
 
 
@@ -107,8 +123,26 @@ Use the hungryDog function and feeding requirements below to do the following:
   NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
 */  
 
-function hungryDog(/*add your code here*/){
-    /*add your code here*/
+function hungryDog(weight, age){
+    if(age >= 1){
+      if(weight <= 5){
+        return (.05 * weight);
+      }else if(weight <= 10){
+        return (.04 * weight);
+      }else if(weight <= 15){
+        return (.03 * weight);
+      }else if(weight > 15){
+        return (.02 * weight);
+      }
+    }else if(age < 1 && age > 0){
+      if(age >= (2/12) && age <= (4/12)){
+        return (.1 * weight);
+      }else if(age > (4/12) && age <= (7/12)){
+        return (.05 * weight);
+      }else if(age > (7/12) && age < 1){
+        return (.04 * weight);
+      }
+    }
   }
 
 
@@ -127,8 +161,23 @@ Use the game function below to do the following:
   HINT: While you can complete this with only conditionals based on strings, it may help to equate choice to a number when using Math.random()
 */
 
-function game(/*add your code here*/){
-    /*add your code here*/
+var comp = Math.random();
+if(comp > (2/3)){
+  comp = 'rock';
+}else if(comp <= (2/3) && comp > (1/3)){
+  comp = 'paper';
+}else if(comp <= (1/3)){
+  comp = 'scissors';
+}
+
+function game(choice, comp){
+  if((comp === 'rock' && choice === 'scissors') || (comp === 'paper' && choice === 'rock') || (comp === 'scissors' && choice === 'paper')){
+    return 'you lose!';
+  }else if((comp === 'rock' && choice === 'paper') || (comp === 'paper' && choice === 'scissors') || (comp === 'scissors' && choice === 'rock')){
+    return 'you win!';
+  }else if(comp === choice){
+    return "it's a tie";
+  }
 }
   
   
@@ -144,9 +193,9 @@ Using the miles function below do the following:
   3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-    /*add your code here*/
-  }
+function miles(km){
+    return (km * 0.621371);
+}
 
 
 
@@ -158,8 +207,8 @@ Using the feet function below do the following:
   3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-    /*add your code here*/
+function feet(cm){
+  return (cm / 30.48);
   }
  
 
@@ -174,10 +223,13 @@ Using the annoyingSong function below do the following:
       "(number) bottles of soda on the wall, (number) bottles of soda, take one down pass it around (number left over) bottles of soda on the wall"
 */
 
-function annoyingSong(/*add your code here*/){
-        /*add your code here*/
+function annoyingSong(entry){
+  let start = entry;
+  for(let i = 0; i < start; i++){
+    return `${start} bottles of soda on the wall, ${start} bottles of soda, take one down pass it around ${(start - 1)} bottles of soda on the wall`;
+    start = (start - 1);
   }
-
+}
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -194,9 +246,19 @@ Using the grade function below do the following:
    below 60 = F
 */
   
-function grade(/*add your code here*/){
-    /*add your code here*/
+function grade(score){
+  if(score >= 90){
+    return "you got a A";
+  }else if(score >= 80){
+    return "you got a B";
+  }else if(score >= 70){
+    return "you got a C";
+  }else if(score >= 60){
+    return "you got a D";
+  }else if(score < 60){
+    return "you got a F";
   }
+}
   
   
   
@@ -214,10 +276,29 @@ Using the vowelCounter function below do the following:
   HINT - try looking up the .includes() method
 */
 
-
-function vowelCounter(/*add your code here*/) {
-    /*add your code here*/
+// y is not considered a vowel, here; wouldn't be hard to add, but I have to go to my track team meeting now
+function vowelCounter(string){
+  let letters = string.toLowerCase();
+  letters = string.split('');
+  let count = 0;
+  for(let i = 0; i < letters.length; i++){
+    if(letters[i].includes("a")){
+      count = count + 1;
+    }else if(letters[i].includes("e")){
+      count = count + 1;
+    }else if(letters[i].includes("i")){
+      count = count + 1;
+    }else if(letters[i].includes("o")){
+      count = count + 1;
+    }else if(letters[i].includes("u")){
+      count = count + 1;
+    }else{
+      count = count;
+    }
+  }
+  return count;
 }
+console.log(`Vowel count check: ${vowelCounter("Endearing")}`)
 
 
 
